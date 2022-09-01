@@ -71,7 +71,9 @@ public class PostServiceImpl implements PostService {
         postDto.setTitle(post.getTitle());
         postDto.setDescription(post.getDescription());
         postDto.setContent(post.getContent());
-        postDto.setComments(commentsMapToDto(post.getComments()));
+        if (post.getComments() != null) {
+            postDto.setComments(commentsMapToDto(post.getComments()));
+        }
         return postDto;
     }
 
@@ -81,7 +83,9 @@ public class PostServiceImpl implements PostService {
         post.setTitle(postDto.getTitle());
         post.setDescription(postDto.getDescription());
         post.setContent(postDto.getContent());
-        post.setComments(commentsMapToEntity(postDto.getComments()));
+        if (postDto.getComments() != null) {
+            post.setComments(commentsMapToEntity(postDto.getComments()));
+        }
         return post;
     }
 
